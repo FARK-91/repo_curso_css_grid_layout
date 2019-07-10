@@ -1,0 +1,19 @@
+body{
+  font-family: Arial;
+}
+
+/* Anadiendo el dosplay de grid comenzamos a trabajar con Grid Layout*/
+.container {
+  display: grid;
+  /*Propiedad de grid que permite crear columnas en el layout definiendo el tamano
+    de cada columna, los tamanos pueden ir desde px, em y %*/
+  /*grid-template-columns: columna1 columna2 columna3 columna4*/
+  grid-template-columns: 25% 200px 25% 25%;
+}
+/*Tecnica para sombrear cada grid creado, asi podremos ver el espacio que abarca
+  cada item.*/
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}

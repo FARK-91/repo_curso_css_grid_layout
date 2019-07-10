@@ -1,0 +1,24 @@
+body{
+  font-family: Arial;
+}
+
+/* Anadiendo el dosplay de grid comenzamos a trabajar con Grid Layout*/
+.container {
+  display: grid;
+  /*Propiedad de grid que permite crear filas en el layout, tomando en cuenta que
+  solo define el explicit grid o sea solo dos filas con su respectivo tamano de
+  300px c/u*/
+  /*grid-template-rows: fila1 fila2;*/
+  /* grid-template-rows: 300px 300px; */
+
+/*Sintaxis reumida*/
+  /* grid-template: filas / columnas; */
+  grid-template: 300px 200px 100px / 25% 200px 25%;
+}
+/*Tecnica para sombrear cada grid creado, asi podremos ver el espacio que abarca
+  cada item.*/
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}

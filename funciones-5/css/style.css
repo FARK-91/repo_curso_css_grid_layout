@@ -1,0 +1,42 @@
+body{
+  font-family: Arial;
+}
+
+.container {
+  display: grid;
+  /*Fracciones fr*/
+  /*Nueva forma de espaciar de forma homogeneo el contenido dentro del layout
+  1fr define un espacion dinamico en porcentaje esto para que todas las columnas o filas tengan
+  el mismo tamano*/
+  /* grid-template: 300px 100px 100px / 1fr 1fr 1fr; */
+  /*Para no repetir los comandos fr por tantas columnas o fila hayan, podemos
+  utilizar la siguiente sentencia*/
+  /* grid-template: 300px 100px 100px / repeat(4,1fr); */
+  /*Para definir un espacio minimo y maximo entre columnas*/
+  /* grid-template: 300px 100px 100px / repeat(4,minmax(200px, 1fr)); */
+  /*Para mantener un tamano estandar a la primera column, cuestion de que a pesar
+  del responsive se siga observando esa columna o grid*/
+  /*grid-template: filas / (columna con minmax) columna columna columna*/
+  grid-template: 300px 100px 100px / minmax(200px, 1fr) 1fr 1fr 1fr;
+  /*Espaciado entre grid: grid-gap: filas columnas;*/
+  grid-gap: 10px 100px;
+
+}
+
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+
+.item:nth-of-type(4){
+  background: blue;
+  overflow: auto;
+  display: grid;
+  grid-template: 50px 50px 50px / 200px 200px 200px;
+}
+
+.item .item {
+  background-color: yellow;
+}

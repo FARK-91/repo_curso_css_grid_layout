@@ -1,0 +1,31 @@
+body{
+  font-family: Arial;
+}
+
+.container {
+  display: grid;
+  grid-template: 300px 100px 100px / 50% 200px 100px;
+}
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+/*Con esta sentencia nos posicionamos en la clase .item pero especificamente en
+el elemento 4, esto lo hacemos cuando tenemos la misma clase en varios sitios del
+codigo, pero queremos hacer referenia solo a una de ellas*/
+.item:nth-of-type(4){
+  background: blue;
+  overflow: auto;
+  /* Display para heredar la el estilo de la clase padre */
+  /* display: subgrid; */
+  /*Como aun no esta disponible en ningun navegador, debemos hacerlo manualmente*/
+  display: grid;
+  grid-template: 50px 50px 50px / 200px 200px 200px;
+}
+
+/*Si quisiera agregar estilos personalizados a lis subitems, solo basta con*/
+.item .item {
+  background-color: yellow;
+}

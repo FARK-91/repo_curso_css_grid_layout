@@ -1,0 +1,46 @@
+body{
+  font-family: Arial;
+}
+
+.container {
+  display: grid;
+  height: 97vh;
+  grid-template-columns: [inicio] 1fr [linea2] 1fr [linea3] 1fr [destacado-end] 1fr [linea5] 1fr [destacado2-end] 1fr [linea7] 1fr [fin];
+  grid-template-rows: [inicio] 200px [inicio2] 200px [final];
+  grid-gap: 5px;
+  /*#DevFree: Hay elementos HTML (div) que pueden quedar fuera de alcance de grid
+    cuando esto ocurre, por default los elementos se apilaran de forma horizontal,
+    ocupando filas, pero si yo quiero que por defecto estos elementos se apilen de
+    forma vertical, puedo hacerlo con la propiedad:
+    grid-auto-flow: orientacion (row o column)*/
+  grid-auto-flow: column;
+  /*#DevFree: Tambien podemos controlar el tamano de cada grid implicito, con la
+    diguiente propiedad:
+    grid-auto-column: 200px 1fr; (esta propiedad solo aplica si trabajamos de
+    forma vertical con columns)*/
+  /* grid-auto-columns: 50px 200px; */
+    /*#DevFree: De forma contraria si vamos a trabajar con filas utilizamos
+      grid-auto-rows*/
+  grid-auto-flow: row;
+  grid-auto-rows: 50px 200px;
+}
+
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.item:nth-of-type(1){
+  grid-column: inicio / destacado-end;
+  grid-row: inicio / final;
+}
+
+.item:nth-of-type(2){
+  grid-column: destacado-end / destacado2-end;
+  grid-row: inicio / final;
+}
+
+.item:nth-of-type(3){
+  grid-column: destacado2-end / fin;
+}

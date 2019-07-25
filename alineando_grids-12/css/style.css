@@ -1,0 +1,27 @@
+body{
+  font-family: Arial;
+}
+
+.container {
+  display: grid;
+  height: 97vh;
+  grid-template-columns: repeat(3 , 200px);
+  grid-template-rows: repeat(4 , 100px);
+  grid-gap: 5px;
+  /* justify-content: : start center end stretch space-around space-between space-evenly;
+  align-items: start center end stretch space-around space-between space-evenly; */
+  justify-content: center;
+}
+
+.item{
+  background: lightblue;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+/*#DevFree: Tambien podemos posicionar por un solo elemento de HTML
+  Solo se alineara a si mismo*/
+.item:nth-of-type(5){
+  /* justify-self: start;
+  align-self: start; */
+}

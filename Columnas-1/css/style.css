@@ -2,7 +2,7 @@ body{
   font-family: Arial;
 }
 
-/* Anadiendo el dosplay de grid comenzamos a trabajar con Grid Layout*/
+/* Anadiendo el display de grid comenzamos a trabajar con Grid Layout*/
 .container {
   display: grid;
   /*Propiedad de grid que permite crear columnas en el layout definiendo el tamano

@@ -1,0 +1,221 @@
+RESUMEN del contenido:
+
+Lo mas importante para que puedas maquetar de forma mas sencilla, es que primero te enfques en el diseno de los elementos que tendra cada section de la pagina y luego te concentres en posicionar y desplazar cada elemento con GRID fijando las filas y columnas que puede tener cada determinado section.
+
+1. Columnas.
+
+	Sintaxis:
+
+	grid-template-columns: columna1 columna2 columna3 columna4
+
+	Ejemplo:
+
+	grid-template-columns: 25% 200px 25% 25%;
+
+	Nota: Cada item o elemento dentro del container se ira apilando de acuerdo a la estructura de finida de 4 columnas.
+
+2. Filas.
+
+	Sintaxis:
+
+	grid-template-rows: fila1 fila2;
+
+	Ejemplo:
+
+	grid-template-rows: 300px 300px;
+
+	Nota: existe una forma resumida para crear filas y columnas en una sola linea.
+
+	grid-template: filas / columnas;
+
+	grid-template: 300px 200px 100px / 25% 200px 25%;
+
+3. Display.
+
+	Sintaxis:
+
+	clase_del_elemento:nth-of-type(numero_del_elemento){
+	}	
+
+	Ejemplo:
+
+	.item:nth-of-type(4){
+	}
+
+	Nota: Suponiendo el caso de que tengamos la misma clase para varios elementos, podemos hacer referencia solo a una clase usando la propiedad 		nth-of-type(), y dentro especificamos el nuevo comportamiento.
+
+4. Espaciado.
+
+	Sintaxis:
+
+	grid-column-gap: tamano en px, em, %,...
+	grid-row-gap: tamano en px, em, %,...
+
+	Forma resumida:
+	grid-gap: tamano en px, em, %,...
+
+	Ejemplo:
+
+	grid-gap: 10px;
+
+	Nota: En la forma resumida alteras el margen de los 4 sentidos top,right,bottom,left entre cada grid.
+	Mientras que si solo especificas grid-row-gap solo alteras el margen right y left entre cada grid, lo mismo para grid-column-gap donde solo 		alteras top y bottom.
+
+5. Funciones.
+
+	Este tema esta comprendido por varias tecnicas para la manipulacion de grids.
+
+	5.1 Fracciones
+
+		Define un tamano dinamico para cada fila o columna.
+
+		Ejemplo:
+
+		grid-template: 300px 100px 100px / 1fr 1fr 1fr;
+
+		Nota: Cada fr permite que 3 columnas del ejemplo tomen un tamano relativamente similar.
+
+	5.2 Repeat()
+
+		Se aplica para no repetir una fila o columna con las mismas caracteristicas.
+
+		Ejemplo: 
+		
+		grid-template: 300px 100px 100px / repeat(4,1fr);
+
+	5.3 Minmax()
+	
+		Define un tamano minimo y maximo para cada fila o columna.
+
+		Ejemplo: 
+		
+		grid-template: 300px 100px 100px / repeat(4,minmax(200px, 1fr));
+
+		Nota: en el ejemplo anterior, se definen 4 columnas con un minimo de 200px de ancho y un maximo de 1fr de ancho. 
+		      Si por el contrario se tratara de filas entonces los puntos minimos y maximos aplican para altura o height.
+6. Areas.
+
+	Las areas permiten definir un layout concreto, bajo el modelo de filas y columnas, donde cada clase que este dentro del grid container, 	abarcara un espacio fila o columna.
+
+	Ejemplo:
+
+	grid-template-areas: "header header"
+                       	     "left contenido"
+                       	     "footer footer";
+
+	Nota: En el ejemplo se definen 3 Filas y 2 Columnas. Donde solo el Header ocupara toda la 1ra fila junto a 2 columnas, mientras el contenido 		left estara en la 2da fila pero solo ocupa la 1ra columna. Y asi sucesivamente con el resto de las clases.
+
+ 
+7. Column-sizes.
+
+	Con esta propiedad podemos definir cuantas columnas tomara un elemento dentro del grid.
+
+	Sintaxis:
+
+	grid-column-start: linea_donde_inicia
+	grid-column-end: linea_donde_termina
+
+	Ejemplo:
+
+	grid-column-start: 1;
+  	grid-column-end: 3;	
+
+	Forma resumida:
+
+	Tomando en cuenta que los numeros toman las lineas definidas por cada grid.
+	grid-column: 1 / 3;
+
+	Tomando en cuenta que los espan definen el numero de columnas que va a abarcar un elemento.
+	grid-column: span 2 / span 4;
+
+	Nota: Un hack importante para que el resto de los elementos que no esten definidos desde un principio, se puedan ir apilando exitosamente es 		que no debemos definir donde terminara la columna, es mejor dejarlo implicito este final.
+
+8. Row-sizes
+
+	Aplica la misma logica que Column-sizes.
+
+	Nota: Lo importante antes posicionar una seccion, es identificar cuantas filas y columnas en total ocupa todo el layout de esa seccion, 	comenzando por el elemento mas pequeno, este es el que marcara la pauta de canto mas o menos mide un fila y una columna, luego debes 		visualizar dentro de cada elemento mas grande ese elemento pequeno para poder contar cuantas filas y columnas ocupa un elemento grande.
+
+
+9. Nombre de Lineas
+
+	Consiste en nombrar las lineas que ocuparan tus grids en sus filas y columnas, para al momento de manipularlas sea mas facil hacerlo, y no 		tengas que estar contando linea por linea o culumna por columna.
+
+	Ejemplo1:
+
+	grid-template-columns: [inicio] 1fr [linea2] 1fr [linea3] 1fr [destacado-end] 1fr [linea5] 1fr [destacado2-end] 1fr [linea7] 1fr [fin];
+    	grid-template-rows: [inicio] 200px [inicio2] 200px [final];	
+
+	Nota1: en el ejemplo anterior tenemos un total de 2 filas con tres lineas nombradas y 7 Columnas con ocho lineas nombradas, lo que facilitara 		la manipulacion en el siguiente ejemplo.
+
+	Ejemplo2:
+
+	.item:nth-of-type(1){
+	  grid-column: inicio / destacado-end;
+	  grid-row: inicio / final;
+	}
+
+	Nota2: En el ejemplo anterior, se esta manipulando el elemento 1 del layout, precisamente posicionandolo entre la linea INICIO y DESTACADO-END 		para las columnas, mientras que para las filas se pocisiona entre la linea INICO y FINAL.
+
+10. Grid Implicito.
+
+	Hay elementos HTML (div) que pueden quedar fuera de alcance de grid cuando esto ocurre, por default los elementos se apilaran de forma 		horizontal, ocupando filas, pero si yo quiero que por defecto estos elementos se apilen de forma vertical, puedo hacerlo con la propiedad.
+
+	Sintaxis:
+
+	grid-auto-flow: orientacion (row o column)
+
+	Ejemplo:
+
+	Para cobertura horizontal:
+
+	grid-auto-flow: row;
+
+	Para cobertura vertical:
+
+	grid-auto-flow: column;
+
+
+11. Alineando items.
+
+	Funciona para alinear vertical u horizontalmente elementos HTML.
+
+	Sintaxis:
+
+	justify-items: start end center stretch; (Horizontal)
+	align-items: start end center stretch;   (Vertical)
+
+	Para alinear un solo elemento basta con apuntarlo y expresar la sentencia self
+
+	Ejemplo:
+
+	.item:nth-of-type(5){
+	  justify-self: start;
+	  align-self: start;
+	}
+
+12. Alineando grids.
+
+	Funciona de la misma forma que FLEX.
+
+	Sintaxis:
+
+	justify-content: : start center end stretch space-around space-between space-evenly; (Horizontal)
+	align-items: start center end stretch space-around space-between space-evenly;   (Vertical)
+
+
+
+13. Layout de Instagram.
+
+14. Layout de Printerest.
+
+15. Layout Lanzamiento de curso en Platzi.
+
+
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ codigo, pero queremos hacer referenia solo a una de ellas*/
 .item:nth-of-type(4){
   background: blue;
   overflow: auto;
-  /* Display para heredar la el estilo de la clase padre */
+  /* Display para heredar el estilo de la clase padre */
   /* display: subgrid; */
   /*Como aun no esta disponible en ningun navegador, debemos hacerlo manualmente*/
   display: grid;

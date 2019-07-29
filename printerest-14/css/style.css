@@ -1,0 +1,39 @@
+.body{
+  margin: 0;
+  font-family: Arial;
+}
+
+.container{
+  display: grid;
+  /*Para conseguir un efecto responsive automatico, basta con
+    colocar el atribto auto-fill en lugar de definir columnas
+    manualmente.*/
+  /* grid-template-columns: repeat(auto-fill, 250px); */
+  grid-template-columns: repeat(3, 250px);
+  grid-gap: 5px;
+  justify-content: center;
+}
+
+.item{
+  border-radius: 5px;
+  padding: 10px;
+  background: #f2f2f2;
+}
+
+.item img {
+  max-width: 100%;
+}
+
+.level-1{
+  /*Aseguramos que el espaciado de filas sea dinamico con grid-row-end
+    sin especificar grid-row-start*/
+  grid-row-end: span 3;
+}
+
+.level-2{
+  grid-row-end: span 2;
+}
+
+.level-3{
+  grid-row-end: span 1;
+}
